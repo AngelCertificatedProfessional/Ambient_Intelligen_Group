@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{039C1FC2-6DB6-43F8-8C67-A07738EFA88F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ambient_Inteligent_Group</RootNamespace>
+    <AssemblyName>Ambient_Inteligent_Group</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\MySQL\Connector.NET 6.9\Assemblies\v2.0\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Conexion\ConexionBD.cs" />
+    <Compile Include="Controlador\AreaControl.cs" />
+    <Compile Include="Controlador\AsociacionControl.cs" />
+    <Compile Include="Controlador\BaseControl.cs" />
+    <Compile Include="Controlador\EscolaridadControl.cs" />
+    <Compile Include="Controlador\HelpetEntidad.cs" />
+    <Compile Include="Controlador\PeriodoControl.cs" />
+    <Compile Include="Controlador\PersonaControl.cs" />
+    <Compile Include="Controlador\PlaticaControl.cs" />
+    <Compile Include="Controlador\ProgramaEducativoControl.cs" />
+    <Compile Include="Controlador\SedeControl.cs" />
+    <Compile Include="Controlador\Tipo_SocioControl.cs" />
+    <Compile Include="Controlador\UniversidadControl.cs" />
+    <Compile Include="Dao\AreaDao.cs" />
+    <Compile Include="Dao\AsociacionDao.cs" />
+    <Compile Include="Dao\BaseDao.cs" />
+    <Compile Include="Dao\EscolaridadDao.cs" />
+    <Compile Include="Dao\PeriodoDao.cs" />
+    <Compile Include="Dao\PersonalDao.cs" />
+    <Compile Include="Dao\PlaticaRealizadaDao.cs" />
+    <Compile Include="Dao\ProgramaEducativoDao.cs" />
+    <Compile Include="Dao\SedeDao.cs" />
+    <Compile Include="Dao\Tipo_SocioDao.cs" />
+    <Compile Include="Dao\UniversidadDao.cs" />
+    <Compile Include="Delegate\AreaDelegate.cs" />
+    <Compile Include="Delegate\AsociacionDelegate.cs" />
+    <Compile Include="Delegate\BaseDelegate.cs" />
+    <Compile Include="Delegate\EscolaridadDelegate.cs" />
+    <Compile Include="Delegate\PeriodoDelegate.cs" />
+    <Compile Include="Delegate\PersonaDelegate.cs" />
+    <Compile Include="Delegate\PlaticaDelegate.cs" />
+    <Compile Include="Delegate\ProgramaEducativoDelegate.cs" />
+    <Compile Include="Delegate\SedeDelegate.cs" />
+    <Compile Include="Delegate\Tipo_SocioDelegate.cs" />
+    <Compile Include="Delegate\UniversidadDelegate.cs" />
+    <Compile Include="Entidad\Area.cs" />
+    <Compile Include="Entidad\Asociacion.cs" />
+    <Compile Include="Entidad\Escolaridad.cs" />
+    <Compile Include="Entidad\Periodo.cs" />
+    <Compile Include="Entidad\Persona.cs" />
+    <Compile Include="Entidad\Platica.cs" />
+    <Compile Include="Entidad\ProgramaEducativo.cs" />
+    <Compile Include="Entidad\Sede.cs" />
+    <Compile Include="Entidad\Tipo_Socio.cs" />
+    <Compile Include="Entidad\Universidad.cs" />
+    <Compile Include="Facade\AreaFacade.cs" />
+    <Compile Include="Facade\AsociacionFacade.cs" />
+    <Compile Include="Facade\BaseFacade.cs" />
+    <Compile Include="Facade\EscolaridadFacade.cs" />
+    <Compile Include="Facade\PeriodoFacade.cs" />
+    <Compile Include="Facade\PersonaFacade.cs" />
+    <Compile Include="Facade\PlaticaFacade.cs" />
+    <Compile Include="Facade\ProgramaEducativoFacade.cs" />
+    <Compile Include="Facade\SedeFacade.cs" />
+    <Compile Include="Facade\Tipo_SocioFacade.cs" />
+    <Compile Include="Facade\UniversidadFacade.cs" />
+    <Compile Include="Vista\AgregarModificarAreaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\AgregarModificarAreaForm.Designer.cs">
+      <DependentUpon>AgregarModificarAreaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\AgregarModificarAsociacionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\AgregarModificarAsociacionForm.Designer.cs">
+      <DependentUpon>AgregarModificarAsociacionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\AgregarModificarEscolaridadForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\AgregarModificarEscolaridadForm.Designer.cs">
+      <DependentUpon>AgregarModificarEscolaridadForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\AgregarModificarPeriodoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\AgregarModificarPeriodoForm.Designer.cs">
+      <DependentUpon>AgregarModificarPeriodoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\AgregarModificarPersonaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\AgregarModificarPersonaForm.Designer.cs">
+      <DependentUpon>AgregarModificarPersonaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\AgregarModificarPlaticaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\AgregarModificarPlaticaForm.Designer.cs">
+      <DependentUpon>AgregarModificarPlaticaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\AgregarModificarProgramaEducativoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\AgregarModificarProgramaEducativoForm.Designer.cs">
+      <DependentUpon>AgregarModificarProgramaEducativoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\AgregarModificarSedeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\AgregarModificarSedeForm.Designer.cs">
+      <DependentUpon>AgregarModificarSedeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\AgregarModificarTipoSocioForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\AgregarModificarTipoSocioForm.Designer.cs">
+      <DependentUpon>AgregarModificarTipoSocioForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\AgregarModificarUniversidadForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\AgregarModificarUniversidadForm.Designer.cs">
+      <DependentUpon>AgregarModificarUniversidadForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\AreaUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vista\AreaUC.Designer.cs">
+      <DependentUpon>AreaUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\AsociacionUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vista\AsociacionUC.Designer.cs">
+      <DependentUpon>AsociacionUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\EscolaridadUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vista\EscolaridadUC.Designer.cs">
+      <DependentUpon>EscolaridadUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\InterfaceComunicador.cs" />
+    <Compile Include="Vista\PersonaUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vista\PersonaUC.Designer.cs">
+      <DependentUpon>PersonaUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\PlaticaUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vista\PlaticaUC.Designer.cs">
+      <DependentUpon>PlaticaUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vista\ProgramaEducativoUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vista\ProgramaEducativoUC.Designer.cs">
+      <DependentUpon>ProgramaEducativoUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\SedeUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vista\SedeUC.Designer.cs">
+      <DependentUpon>SedeUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\PeriodoUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vista\PeriodoUC.Designer.cs">
+      <DependentUpon>PeriodoUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Tipo_SocioUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vista\Tipo_SocioUC.Designer.cs">
+      <DependentUpon>Tipo_SocioUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\UniversidadUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vista\UniversidadUC.Designer.cs">
+      <DependentUpon>UniversidadUC.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Vista\AgregarModificarAreaForm.resx">
+      <DependentUpon>AgregarModificarAreaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\AgregarModificarAsociacionForm.resx">
+      <DependentUpon>AgregarModificarAsociacionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\AgregarModificarEscolaridadForm.resx">
+      <DependentUpon>AgregarModificarEscolaridadForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\AgregarModificarPeriodoForm.resx">
+      <DependentUpon>AgregarModificarPeriodoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\AgregarModificarPersonaForm.resx">
+      <DependentUpon>AgregarModificarPersonaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\AgregarModificarPlaticaForm.resx">
+      <DependentUpon>AgregarModificarPlaticaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\AgregarModificarProgramaEducativoForm.resx">
+      <DependentUpon>AgregarModificarProgramaEducativoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\AgregarModificarSedeForm.resx">
+      <DependentUpon>AgregarModificarSedeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\AgregarModificarTipoSocioForm.resx">
+      <DependentUpon>AgregarModificarTipoSocioForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\AgregarModificarUniversidadForm.resx">
+      <DependentUpon>AgregarModificarUniversidadForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\AreaUC.resx">
+      <DependentUpon>AreaUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\AsociacionUC.resx">
+      <DependentUpon>AsociacionUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\EscolaridadUC.resx">
+      <DependentUpon>EscolaridadUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Vista\PersonaUC.resx">
+      <DependentUpon>PersonaUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\PlaticaUC.resx">
+      <DependentUpon>PlaticaUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\ProgramaEducativoUC.resx">
+      <DependentUpon>ProgramaEducativoUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\SedeUC.resx">
+      <DependentUpon>SedeUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\PeriodoUC.resx">
+      <DependentUpon>PeriodoUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Tipo_SocioUC.resx">
+      <DependentUpon>Tipo_SocioUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\UniversidadUC.resx">
+      <DependentUpon>UniversidadUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Vista\App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\recursos\interrogacion.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
