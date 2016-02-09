@@ -48,8 +48,30 @@ namespace Ambient_Inteligent_Group.Vista
 
         private void eliminarBtn_Click(object sender, EventArgs e)
         {
-
+            if (tablaPersona.SelectedRows.Count == 1)
+            {
+                if (MessageBox.Show("Esta Seguro que desea eliminar la persona?", "Estas Seguro??", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    int id = Convert.ToInt32(tablaPersona.CurrentRow.Cells[0].Value);
+                    personaControl.Eliminar("Socio_Universidad", id, "Persona_id");
+                    contMen++;
+                    personaControl.Eliminar("Persona", id, "idpersona");
+                    contMen--;
+                }
+            }
+            else
+            {
+                MessageBox.Show("debe de seleccionar una fila");
+            }
         }
 
+        private void modificarBtn_Click(object sender, EventArgs e)
+        {
+            if (tablaPersona.SelectedRows.Count == 1)
+            {
+                int id = Convert.ToInt32(tablaPersona.CurrentRow.Cells[0].Value);
+                personaControl.ObtenerPorId("Persona", id, "idPersona");
+            }
+        }
     }
 }

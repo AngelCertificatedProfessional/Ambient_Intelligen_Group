@@ -9,30 +9,31 @@ using System.Threading.Tasks;
 
 namespace Ambient_Inteligent_Group.Controlador
 {
-    public class PersonaControl : BaseControl
+    public class PublicacionControl : BaseControl
     {
-        public PersonaControl(InterfaceComunicador comunicador, Type clazz)
+
+        public PublicacionControl(InterfaceComunicador comunicador, Type clazz)
             : base(comunicador, clazz)
         {
             ;
         }
 
-        public void BuscarNombre(String nombrePersona, String nombreTabla)
+        public void BuscarNombre(String nombrePublicacion, String nombreTabla)
         {
-            com.setTabla(HelpetEntidad.DescomponerObjetos(PersonaDelegate.BuscarNombre(nombrePersona), nombreTabla));
+            com.setTabla(HelpetEntidad.DescomponerObjetos(PublicacionDelegate.BuscarPorPublicacion(nombrePublicacion), nombreTabla));
             BaseDelegate.CerrarConexion();
         }
 
-        public void BuscarUniversidad(String nombrePersona, String nombreTabla)
+        public void BuscarPersona(String nombrePersona, String nombreTabla)
         {
-            com.setTabla(HelpetEntidad.DescomponerObjetos(PersonaDelegate.BuscarUniversidad(nombrePersona), nombreTabla));
+            com.setTabla(HelpetEntidad.DescomponerObjetos(PublicacionDelegate.BuscarPersona(nombrePersona), nombreTabla));
             BaseDelegate.CerrarConexion();
         }
 
-        public void ModificarPersona(Persona persona,List<int> uniLis)
+        public void ModificarPublicacion(Publicacion publicacion, List<int> perLis)
         {
             Boolean resultado;
-            resultado = PersonaDelegate.ModificarPersona(persona,uniLis);
+            resultado = PublicacionDelegate.ModificarPublicacion(publicacion, perLis);
             if (resultado == true)
             {
                 com.setMensaje("La modificacion fue exitoso");
@@ -43,10 +44,10 @@ namespace Ambient_Inteligent_Group.Controlador
             }
         }
 
-        public void GuardarPersona(Persona persona,List<int> uniLis)
+        public void GuardarPublicacion(Publicacion publicacion, List<int> perLis)
         {
             Boolean resultado;
-            resultado = PersonaDelegate.GuardarPersona(persona,uniLis);
+            resultado = PublicacionDelegate.GuardarPublicacion(publicacion, perLis);
             if (resultado == true)
             {
                 com.setMensaje("El registro fue exitoso");
@@ -56,12 +57,6 @@ namespace Ambient_Inteligent_Group.Controlador
                 com.setMensaje("No se logro el registro");
             }
 
-        }
-
-        public void BuscarEscolaridad(string nombreTabla, int ubicacion)
-        {
-            com.setLista(HelpetEntidad.DescomponerObjetos(BaseDelegate.BuscarTodos(nombreTabla), nombreTabla), ubicacion);
-            BaseDelegate.CerrarConexion();
         }
     }
 }

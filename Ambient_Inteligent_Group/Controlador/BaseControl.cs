@@ -43,6 +43,12 @@ namespace Ambient_Inteligent_Group.Controlador
             BaseDelegate.CerrarConexion();
         }
 
+        public void ObtenerPorIdLis(String tabla, int id, String idColumnaS)
+        {
+            com.setTabla(HelpetEntidad.DescomponerObjetos(BaseDelegate.ObtenerPorId(tabla, id, idColumnaS), tabla));
+            BaseDelegate.CerrarConexion();
+        }
+
         public void ObtenerPorIdConImagen(String tabla, int id, String idColumnaS)
         {
             com.setInfo(HelpetEntidad.DescomponerObjeto(BaseDelegate.ObtenerPorIdConImagen(tabla, id, idColumnaS), tabla));

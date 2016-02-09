@@ -65,18 +65,23 @@
     <Compile Include="Controlador\PersonaControl.cs" />
     <Compile Include="Controlador\PlaticaControl.cs" />
     <Compile Include="Controlador\ProgramaEducativoControl.cs" />
+    <Compile Include="Controlador\PublicacionControl.cs" />
     <Compile Include="Controlador\SedeControl.cs" />
     <Compile Include="Controlador\Tipo_SocioControl.cs" />
     <Compile Include="Controlador\UniversidadControl.cs" />
     <Compile Include="Dao\AreaDao.cs" />
     <Compile Include="Dao\AsociacionDao.cs" />
     <Compile Include="Dao\BaseDao.cs" />
+    <Compile Include="Dao\Colaborador_PublicacionDao.cs" />
     <Compile Include="Dao\EscolaridadDao.cs" />
     <Compile Include="Dao\PeriodoDao.cs" />
     <Compile Include="Dao\PersonalDao.cs" />
     <Compile Include="Dao\PlaticaRealizadaDao.cs" />
     <Compile Include="Dao\ProgramaEducativoDao.cs" />
+    <Compile Include="Dao\PublicacionDao.cs" />
     <Compile Include="Dao\SedeDao.cs" />
+    <Compile Include="Dao\SocioDao.cs" />
+    <Compile Include="Dao\Socio_UniversidadDao.cs" />
     <Compile Include="Dao\Tipo_SocioDao.cs" />
     <Compile Include="Dao\UniversidadDao.cs" />
     <Compile Include="Delegate\AreaDelegate.cs" />
@@ -87,7 +92,9 @@
     <Compile Include="Delegate\PersonaDelegate.cs" />
     <Compile Include="Delegate\PlaticaDelegate.cs" />
     <Compile Include="Delegate\ProgramaEducativoDelegate.cs" />
+    <Compile Include="Delegate\PublicacionDelegate.cs" />
     <Compile Include="Delegate\SedeDelegate.cs" />
+    <Compile Include="Delegate\SocioDelegate.cs" />
     <Compile Include="Delegate\Tipo_SocioDelegate.cs" />
     <Compile Include="Delegate\UniversidadDelegate.cs" />
     <Compile Include="Entidad\Area.cs" />
@@ -97,7 +104,9 @@
     <Compile Include="Entidad\Persona.cs" />
     <Compile Include="Entidad\Platica.cs" />
     <Compile Include="Entidad\ProgramaEducativo.cs" />
+    <Compile Include="Entidad\Publicacion.cs" />
     <Compile Include="Entidad\Sede.cs" />
+    <Compile Include="Entidad\Socio.cs" />
     <Compile Include="Entidad\Tipo_Socio.cs" />
     <Compile Include="Entidad\Universidad.cs" />
     <Compile Include="Facade\AreaFacade.cs" />
@@ -108,7 +117,9 @@
     <Compile Include="Facade\PersonaFacade.cs" />
     <Compile Include="Facade\PlaticaFacade.cs" />
     <Compile Include="Facade\ProgramaEducativoFacade.cs" />
+    <Compile Include="Facade\PublicacionFacade.cs" />
     <Compile Include="Facade\SedeFacade.cs" />
+    <Compile Include="Facade\SocioFacade.cs" />
     <Compile Include="Facade\Tipo_SocioFacade.cs" />
     <Compile Include="Facade\UniversidadFacade.cs" />
     <Compile Include="Vista\AgregarModificarAreaForm.cs">
@@ -152,6 +163,12 @@
     </Compile>
     <Compile Include="Vista\AgregarModificarProgramaEducativoForm.Designer.cs">
       <DependentUpon>AgregarModificarProgramaEducativoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\AgregarModificarPublicacionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\AgregarModificarPublicacionForm.Designer.cs">
+      <DependentUpon>AgregarModificarPublicacionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Vista\AgregarModificarSedeForm.cs">
       <SubType>Form</SubType>
@@ -216,6 +233,12 @@
     <Compile Include="Vista\ProgramaEducativoUC.Designer.cs">
       <DependentUpon>ProgramaEducativoUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vista\PublicacionUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vista\PublicacionUC.Designer.cs">
+      <DependentUpon>PublicacionUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vista\SedeUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -261,6 +284,9 @@
     <EmbeddedResource Include="Vista\AgregarModificarProgramaEducativoForm.resx">
       <DependentUpon>AgregarModificarProgramaEducativoForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vista\AgregarModificarPublicacionForm.resx">
+      <DependentUpon>AgregarModificarPublicacionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vista\AgregarModificarSedeForm.resx">
       <DependentUpon>AgregarModificarSedeForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -300,6 +326,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vista\ProgramaEducativoUC.resx">
       <DependentUpon>ProgramaEducativoUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\PublicacionUC.resx">
+      <DependentUpon>PublicacionUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vista\SedeUC.resx">
       <DependentUpon>SedeUC.cs</DependentUpon>

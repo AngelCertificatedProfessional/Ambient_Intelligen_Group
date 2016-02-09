@@ -179,6 +179,7 @@ namespace Ambient_Inteligent_Group
             this.publicacionMI.Name = "publicacionMI";
             this.publicacionMI.Size = new System.Drawing.Size(164, 22);
             this.publicacionMI.Text = "Publicacion";
+            this.publicacionMI.Click += new System.EventHandler(this.publicacionMI_Click);
             // 
             // eventosMI
             // 
@@ -225,6 +226,7 @@ namespace Ambient_Inteligent_Group
         private Ambient_Inteligent_Group.Vista.AsociacionUC asociacionUC;
         private Ambient_Inteligent_Group.Vista.PlaticaUC platicaUC;
         private Ambient_Inteligent_Group.Vista.PersonaUC personaUC;
+        private Ambient_Inteligent_Group.Vista.PublicacionUC publicacionUC;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem mantenimientoMI;
         private System.Windows.Forms.ToolStripMenuItem procesosMI;
@@ -319,6 +321,14 @@ namespace Ambient_Inteligent_Group
             this.personaUC.Visible = false;
             this.personaUC.Enabled = true;
             this.Controls.Add(personaUC);
+
+            publicacionUC = new PublicacionUC();
+            this.publicacionUC.Location = new System.Drawing.Point(0, 0);
+            this.publicacionUC.Name = "publicacionUC";
+            this.publicacionUC.TabIndex = 1;
+            this.publicacionUC.Visible = false;
+            this.publicacionUC.Enabled = true;
+            this.Controls.Add(publicacionUC);
         }
 
         private System.Windows.Forms.ToolStripMenuItem eventosMI;

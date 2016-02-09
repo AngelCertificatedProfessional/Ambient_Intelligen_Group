@@ -181,6 +181,7 @@ namespace Ambient_Inteligent_Group.Controlador
                 persona.ApellidoMaterno = (String)personaLista[2];
                 persona.SetIdEscolaridad((int)personaLista[3]);
                 persona.Sexo = (char)personaLista[4];
+
             }
             else
             {
@@ -194,30 +195,81 @@ namespace Ambient_Inteligent_Group.Controlador
             return persona;
         }
 
-
+        public static Publicacion ContruccionPublicacion(List<Object> publicacionLista, String almacenamiento)
+        {
+            Publicacion publicacion = new Publicacion();
+            if (almacenamiento == "Guardar")
+            {
+                publicacion.Descripcion = ((String)publicacionLista[0]);
+                publicacion.SetTipo_Publicacion(((int)publicacionLista[1]));
+                publicacion.Anio = ((String)publicacionLista[2]);
+                publicacion.Link = ((String)publicacionLista[3]);
+                publicacion.SetPagina((String)publicacionLista[4]);
+            }
+            else
+            {
+                publicacion.IdPublicacion = ((int)publicacionLista[0]);
+                publicacion.Descripcion = ((String)publicacionLista[1]);
+                publicacion.SetTipo_Publicacion(((int)publicacionLista[2]));
+                publicacion.Anio = ((String)publicacionLista[3]);
+                publicacion.Link = ((String)publicacionLista[4]);
+                publicacion.SetPagina((String)publicacionLista[5]);
+            }
+            return publicacion;
+        }
 
         public static List<Object> DescomponerObjetos(MySqlDataReader mySqlDataReader,String tabla)
         {
-            if (tabla == "Sede") {
+            if (tabla == "Sede")
+            {
                 return DescomponerSedes(mySqlDataReader);
-            }else if(tabla == "Universidad"){
+            }
+            else if (tabla == "Universidad")
+            {
                 return DescomponerUniversidades(mySqlDataReader);
-            }else if (tabla == "Area") {
+            }
+            else if (tabla == "Area")
+            {
                 return DescomponerAreas(mySqlDataReader);
-            }else if(tabla == "Periodo"){
+            }
+            else if (tabla == "Periodo")
+            {
                 return DescomponerPeriodos(mySqlDataReader);
-            }else if (tabla == "Tipo_Socio") {
+            }
+            else if (tabla == "Tipo_Socio")
+            {
                 return DescomponerTipo_Socios(mySqlDataReader);
-            }else if (tabla == "Escolaridad"){
+            }
+            else if (tabla == "Escolaridad")
+            {
                 return DescomponerEscolaridades(mySqlDataReader);
-            }else if(tabla == "Programa_Educativo"){
+            }
+            else if (tabla == "Programa_Educativo")
+            {
                 return DescomponerProgramaEducativos(mySqlDataReader);
-            }else if (tabla == "Asociacion"){
+            }
+            else if (tabla == "Asociacion")
+            {
                 return DescomponerAsociaciones(mySqlDataReader);
-            }else if (tabla == "Platica") {
+            }
+            else if (tabla == "Platica")
+            {
                 return DescomponerPlaticas(mySqlDataReader);
-            }else if (tabla == "Persona") {
+            }
+            else if (tabla == "Persona")
+            {
                 return DescomponerPersonas(mySqlDataReader);
+            }
+            else if (tabla == "Socio_Universidad")
+            {
+                return DescomponerSocio_Universidades(mySqlDataReader);
+            }
+            else if (tabla == "Publicacion")
+            {
+                return DescomponerPublicaciones(mySqlDataReader);
+            }
+            else if (tabla == "Colaborador_Publicacion") {
+                return DescomponerColaborador_Publicacion(mySqlDataReader);
             }
             return null;
         }
@@ -248,6 +300,30 @@ namespace Ambient_Inteligent_Group.Controlador
                 listaSede.Add(sede);
             }
             return listaSede;
+        }
+
+        private static List<Object> DescomponerSocio_Universidades(MySqlDataReader socio_universidadBD)
+        {
+            List<Object> listaSocio_Universidad = new List<Object>();
+            while (socio_universidadBD.Read())
+            {
+                int idUniversidad = new int();
+                idUniversidad = socio_universidadBD.GetInt32(2);
+                listaSocio_Universidad.Add(idUniversidad);
+            }
+            return listaSocio_Universidad;
+        }
+
+        private static List<Object> DescomponerColaborador_Publicacion(MySqlDataReader Colaborador_PublicacionBD)
+        {
+            List<Object> listaColaborador_Publicacion = new List<Object>();
+            while (Colaborador_PublicacionBD.Read())
+            {
+                int idPersona= new int();
+                idPersona = Colaborador_PublicacionBD.GetInt32(2);
+                listaColaborador_Publicacion.Add(idPersona);
+            }
+            return listaColaborador_Publicacion;
         }
 
 
@@ -331,7 +407,22 @@ namespace Ambient_Inteligent_Group.Controlador
         }
 
 
-
+        private static List<Object> DescomponerPublicaciones(MySqlDataReader publicacionBD)
+        {
+            List<Object> listaPublicacion = new List<Object>();
+            while (publicacionBD.Read())
+            {
+                Publicacion publicacion = new Publicacion();
+                publicacion.IdPublicacion = publicacionBD.GetInt32(0);
+                publicacion.Descripcion = publicacionBD.GetString(1);
+                publicacion.SetTipo_Publicacion(publicacionBD.GetInt32(2));
+                publicacion.Anio = publicacionBD.GetString(3);
+                publicacion.Link = publicacionBD.GetString(4);
+                publicacion.SetPagina(publicacionBD.GetString(5));
+                listaPublicacion.Add(publicacion);
+            }
+            return listaPublicacion;
+        }
 
         private static List<Object> DescomponerAsociaciones(MySqlDataReader asociacionBD)
         {
@@ -416,22 +507,44 @@ namespace Ambient_Inteligent_Group.Controlador
 
         public static List<Object> DescomponerObjeto(MySqlDataReader mySqlDataReader, String tabla)
         {
-            if (tabla == "Sede") {
+            if (tabla == "Sede")
+            {
                 return DescomponerSede(mySqlDataReader);
-            }else if(tabla == "Universidad"){
+            }
+            else if (tabla == "Universidad")
+            {
                 return DescomponerUniversidad(mySqlDataReader);
-            }else if (tabla == "Area") {
+            }
+            else if (tabla == "Area")
+            {
                 return DescomponerArea(mySqlDataReader);
-            }else if (tabla == "Periodo") {
+            }
+            else if (tabla == "Periodo")
+            {
                 return DescomponerPeriodo(mySqlDataReader);
-            }else if(tabla == "Tipo_Socio"){
+            }
+            else if (tabla == "Tipo_Socio")
+            {
                 return DescomponerTipo_Socio(mySqlDataReader);
-            }else if (tabla == "Escolaridad"){
+            }
+            else if (tabla == "Escolaridad")
+            {
                 return DescomponerEscolaridad(mySqlDataReader);
-            }else if (tabla == "Programa_Educativo"){
+            }
+            else if (tabla == "Programa_Educativo")
+            {
                 return DescomponerProgramaEducativo(mySqlDataReader);
-            }else if (tabla == "Platica") {
+            }
+            else if (tabla == "Platica")
+            {
                 return DescomponerPlatica(mySqlDataReader);
+            }
+            else if (tabla == "Persona")
+            {
+                return DescomponerPersona(mySqlDataReader);
+            }
+            else if (tabla == "Publicacion") {
+                return DescomponerPublicacion(mySqlDataReader);
             }
             return null;
         }
@@ -562,8 +675,42 @@ namespace Ambient_Inteligent_Group.Controlador
             return listaPlatica;
         }
 
+        private static List<Object> DescomponerPersona(MySqlDataReader personaBD)
+        {
+            List<Object> listaPersona = new List<Object>();
+            while (personaBD.Read())
+            {
+                listaPersona.Add(personaBD.GetInt32(0));
+                listaPersona.Add(personaBD.GetString(1));
+                listaPersona.Add(personaBD.GetString(2));
+                listaPersona.Add(personaBD.GetString(3));
+                if (personaBD.IsDBNull(4))
+                {
+                    listaPersona.Add(null);
+                }
+                else
+                {
+                    listaPersona.Add(personaBD.GetInt32(4));
+                }
+                listaPersona.Add(personaBD.GetChar(5));
+            }
+            return listaPersona;
+        }
 
-
+        private static List<Object> DescomponerPublicacion(MySqlDataReader publicacionBD)
+        {
+            List<Object> listaPublicacion = new List<Object>();
+            while (publicacionBD.Read())
+            {
+                listaPublicacion.Add(publicacionBD.GetInt32(0));
+                listaPublicacion.Add(publicacionBD.GetString(1));
+                listaPublicacion.Add(publicacionBD.GetInt32(2));
+                listaPublicacion.Add(publicacionBD.GetString(3));
+                listaPublicacion.Add(publicacionBD.GetString(4));
+                listaPublicacion.Add(publicacionBD.GetString(5));
+            }
+            return listaPublicacion;
+        }
 
         public static List<Object> DescomponerObjeto(MySqlDataAdapter mySqlDataAdapter, String tabla)
         {

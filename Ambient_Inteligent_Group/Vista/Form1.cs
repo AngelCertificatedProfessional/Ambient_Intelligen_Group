@@ -42,6 +42,7 @@ namespace Ambient_Inteligent_Group
             asociacionUC.Visible = visibilidad;
             platicaUC.Visible = visibilidad;
             personaUC.Visible = visibilidad;
+            publicacionUC.Visible = visibilidad;
         }
 
         private void areaMI_Click(object sender, EventArgs e)
@@ -92,5 +93,10 @@ namespace Ambient_Inteligent_Group
             personaUC.Visible = true;
         }
 
+        private void publicacionMI_Click(object sender, EventArgs e)
+        {
+            VisibilidadPaneles(false);
+            publicacionUC.Visible = true;
+        }
     }
 }

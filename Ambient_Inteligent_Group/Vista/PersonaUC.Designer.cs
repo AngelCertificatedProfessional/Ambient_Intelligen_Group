@@ -12,6 +12,7 @@ namespace Ambient_Inteligent_Group.Vista
         /// </summary>
         private System.ComponentModel.IContainer components = null;
         private PersonaControl personaControl;
+        private int contMen = 1;
         /// <summary> 
         /// Limpiar los recursos que se estén utilizando.
         /// </summary>
@@ -55,6 +56,7 @@ namespace Ambient_Inteligent_Group.Vista
             this.modificarBtn.TabIndex = 17;
             this.modificarBtn.Text = "Modificar";
             this.modificarBtn.UseVisualStyleBackColor = true;
+            this.modificarBtn.Click += new System.EventHandler(this.modificarBtn_Click);
             // 
             // eliminarBtn
             // 
@@ -184,10 +186,9 @@ namespace Ambient_Inteligent_Group.Vista
             {
                 this.Enabled = true;
             }
-            else
+            else if(contMen == 2)
             {
                 MessageBox.Show(mensaje, "Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
             }
             personaControl.BuscarTodos("Persona");
         }
@@ -220,7 +221,7 @@ namespace Ambient_Inteligent_Group.Vista
 
         public void setInfo(List<Object> info)
         {
-            AgregarModificarPeriodoForm agreMod = new AgregarModificarPeriodoForm(this);
+            AgregarModificarPersonaForm agreMod = new AgregarModificarPersonaForm(this);
             agreMod.Visible = true;
             this.Enabled = false;
             agreMod.ObtenerInfo(info);

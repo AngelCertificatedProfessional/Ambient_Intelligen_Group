@@ -21,12 +21,12 @@ namespace Ambient_Inteligent_Group.Delegate
             return UniversidadFacade.BuscarPorNombre(nombre);
         }
 
-        public static Boolean GuardarPersona(Persona persona, List<Universidad> uniLis)
+        public static Boolean GuardarPersona(Persona persona, List<int> uniLis)
         {
             return PersonaFacade.GuardarPersona(persona, uniLis);
         }
 
-        public static Boolean ModificarPersona(Persona persona, List<Universidad> uniLis)
+        public static Boolean ModificarPersona(Persona persona, List<int> uniLis)
         {
             return PersonaFacade.ModificarPersona(persona, uniLis);
         }

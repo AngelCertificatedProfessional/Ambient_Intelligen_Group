@@ -3,19 +3,20 @@ using Ambient_Inteligent_Group.Entidad;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+
 namespace Ambient_Inteligent_Group.Vista
 {
-    partial class AgregarModificarPersonaForm :InterfaceComunicador
+    partial class AgregarModificarPublicacionForm : InterfaceComunicador
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-        private int idPersona;
-        List<Universidad> uniLis;
-        private PersonaControl personaControl;
+        private PublicacionControl publicacionControl;
         private int tablaDetector = 0;
-        List<Object> listaSocioUniversidad;
+        private List<Persona> perLis;
+        private int idPublicacion;
+        private List<Object> listaColaboradorPublicacion;
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -39,13 +40,19 @@ namespace Ambient_Inteligent_Group.Vista
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.advertenciaApellidoPLbl = new System.Windows.Forms.Label();
-            this.apellidoMaternoTxt = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.advertenciaPaginaLbl = new System.Windows.Forms.Label();
+            this.advertenciaLinkLbl = new System.Windows.Forms.Label();
+            this.paginaTxt = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tipoCb = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.advertenciaAnioLbl = new System.Windows.Forms.Label();
+            this.linkTxt = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.advertenciaNombreLbl = new System.Windows.Forms.Label();
-            this.apellidoPaternoTxt = new System.Windows.Forms.TextBox();
+            this.anioTxt = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.nombreTxt = new System.Windows.Forms.TextBox();
-            this.abreviacionLbl = new System.Windows.Forms.Label();
             this.nombreLbl = new System.Windows.Forms.Label();
             this.instruccionesLbl = new System.Windows.Forms.Label();
             this.agregarModLbl = new System.Windows.Forms.Label();
@@ -54,25 +61,20 @@ namespace Ambient_Inteligent_Group.Vista
             this.label8 = new System.Windows.Forms.Label();
             this.eliminarBtn = new System.Windows.Forms.Button();
             this.agregarBtn = new System.Windows.Forms.Button();
-            this.tablaListaUniDt = new System.Windows.Forms.DataGridView();
-            this.tablaCataUniDt = new System.Windows.Forms.DataGridView();
-            this.universidadTxt = new System.Windows.Forms.TextBox();
+            this.tablaListaPerDt = new System.Windows.Forms.DataGridView();
+            this.tablaCataPerDt = new System.Windows.Forms.DataGridView();
+            this.personaTxt = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.buscarBtn = new System.Windows.Forms.Button();
             this.guardarBtn = new System.Windows.Forms.Button();
             this.cancelarBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.escolaridadCb = new System.Windows.Forms.ComboBox();
-            this.mujerRb = new System.Windows.Forms.RadioButton();
-            this.hombreRb = new System.Windows.Forms.RadioButton();
-            this.label5 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tablaListaUniDt)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tablaCataUniDt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaListaPerDt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaCataPerDt)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -80,27 +82,28 @@ namespace Ambient_Inteligent_Group.Vista
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Location = new System.Drawing.Point(2, -2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(851, 542);
-            this.tabControl1.TabIndex = 33;
+            this.tabControl1.TabIndex = 34;
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.tabPage1.Controls.Add(this.mujerRb);
-            this.tabPage1.Controls.Add(this.hombreRb);
-            this.tabPage1.Controls.Add(this.label5);
-            this.tabPage1.Controls.Add(this.escolaridadCb);
+            this.tabPage1.Controls.Add(this.advertenciaPaginaLbl);
+            this.tabPage1.Controls.Add(this.advertenciaLinkLbl);
+            this.tabPage1.Controls.Add(this.paginaTxt);
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.tipoCb);
             this.tabPage1.Controls.Add(this.label4);
-            this.tabPage1.Controls.Add(this.advertenciaApellidoPLbl);
-            this.tabPage1.Controls.Add(this.apellidoMaternoTxt);
-            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.advertenciaAnioLbl);
+            this.tabPage1.Controls.Add(this.linkTxt);
+            this.tabPage1.Controls.Add(this.label10);
             this.tabPage1.Controls.Add(this.advertenciaNombreLbl);
-            this.tabPage1.Controls.Add(this.apellidoPaternoTxt);
+            this.tabPage1.Controls.Add(this.anioTxt);
+            this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.nombreTxt);
-            this.tabPage1.Controls.Add(this.abreviacionLbl);
             this.tabPage1.Controls.Add(this.nombreLbl);
             this.tabPage1.Controls.Add(this.instruccionesLbl);
             this.tabPage1.Controls.Add(this.agregarModLbl);
@@ -111,77 +114,142 @@ namespace Ambient_Inteligent_Group.Vista
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "General";
             // 
-            // advertenciaApellidoPLbl
+            // advertenciaPaginaLbl
             // 
-            this.advertenciaApellidoPLbl.AutoSize = true;
-            this.advertenciaApellidoPLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.advertenciaApellidoPLbl.ForeColor = System.Drawing.Color.Maroon;
-            this.advertenciaApellidoPLbl.Location = new System.Drawing.Point(192, 219);
-            this.advertenciaApellidoPLbl.Name = "advertenciaApellidoPLbl";
-            this.advertenciaApellidoPLbl.Size = new System.Drawing.Size(110, 15);
-            this.advertenciaApellidoPLbl.TabIndex = 37;
-            this.advertenciaApellidoPLbl.Text = "Campo Obligatorio";
-            this.advertenciaApellidoPLbl.Visible = false;
+            this.advertenciaPaginaLbl.AutoSize = true;
+            this.advertenciaPaginaLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.advertenciaPaginaLbl.ForeColor = System.Drawing.Color.Maroon;
+            this.advertenciaPaginaLbl.Location = new System.Drawing.Point(124, 349);
+            this.advertenciaPaginaLbl.Name = "advertenciaPaginaLbl";
+            this.advertenciaPaginaLbl.Size = new System.Drawing.Size(110, 15);
+            this.advertenciaPaginaLbl.TabIndex = 45;
+            this.advertenciaPaginaLbl.Text = "Campo Obligatorio";
+            this.advertenciaPaginaLbl.Visible = false;
             // 
-            // apellidoMaternoTxt
+            // advertenciaLinkLbl
             // 
-            this.apellidoMaternoTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.apellidoMaternoTxt.Location = new System.Drawing.Point(192, 250);
-            this.apellidoMaternoTxt.Name = "apellidoMaternoTxt";
-            this.apellidoMaternoTxt.Size = new System.Drawing.Size(349, 29);
-            this.apellidoMaternoTxt.TabIndex = 36;
+            this.advertenciaLinkLbl.AutoSize = true;
+            this.advertenciaLinkLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.advertenciaLinkLbl.ForeColor = System.Drawing.Color.Maroon;
+            this.advertenciaLinkLbl.Location = new System.Drawing.Point(124, 284);
+            this.advertenciaLinkLbl.Name = "advertenciaLinkLbl";
+            this.advertenciaLinkLbl.Size = new System.Drawing.Size(110, 15);
+            this.advertenciaLinkLbl.TabIndex = 44;
+            this.advertenciaLinkLbl.Text = "Campo Obligatorio";
+            this.advertenciaLinkLbl.Visible = false;
             // 
-            // label2
+            // paginaTxt
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(26, 250);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(158, 24);
-            this.label2.TabIndex = 35;
-            this.label2.Text = "Apellido Materno:";
+            this.paginaTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.paginaTxt.Location = new System.Drawing.Point(127, 317);
+            this.paginaTxt.Name = "paginaTxt";
+            this.paginaTxt.Size = new System.Drawing.Size(349, 29);
+            this.paginaTxt.TabIndex = 43;
+            this.paginaTxt.Enter += new System.EventHandler(this.paginaTxt_Enter);
+            this.paginaTxt.Leave += new System.EventHandler(this.paginaTxt_Leave);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(25, 317);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(80, 24);
+            this.label3.TabIndex = 42;
+            this.label3.Text = "Pagina*:";
+            // 
+            // tipoCb
+            // 
+            this.tipoCb.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tipoCb.FormattingEnabled = true;
+            this.tipoCb.Location = new System.Drawing.Point(127, 374);
+            this.tipoCb.Name = "tipoCb";
+            this.tipoCb.Size = new System.Drawing.Size(349, 26);
+            this.tipoCb.TabIndex = 41;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(25, 376);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 24);
+            this.label4.TabIndex = 40;
+            this.label4.Text = "Tipo*: ";
+            // 
+            // advertenciaAnioLbl
+            // 
+            this.advertenciaAnioLbl.AutoSize = true;
+            this.advertenciaAnioLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.advertenciaAnioLbl.ForeColor = System.Drawing.Color.Maroon;
+            this.advertenciaAnioLbl.Location = new System.Drawing.Point(124, 215);
+            this.advertenciaAnioLbl.Name = "advertenciaAnioLbl";
+            this.advertenciaAnioLbl.Size = new System.Drawing.Size(110, 15);
+            this.advertenciaAnioLbl.TabIndex = 37;
+            this.advertenciaAnioLbl.Text = "Campo Obligatorio";
+            this.advertenciaAnioLbl.Visible = false;
+            // 
+            // linkTxt
+            // 
+            this.linkTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkTxt.Location = new System.Drawing.Point(127, 252);
+            this.linkTxt.Name = "linkTxt";
+            this.linkTxt.Size = new System.Drawing.Size(349, 29);
+            this.linkTxt.TabIndex = 36;
+            this.linkTxt.Enter += new System.EventHandler(this.linkTxt_Enter);
+            this.linkTxt.Leave += new System.EventHandler(this.linkTxt_Leave);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(25, 252);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(56, 24);
+            this.label10.TabIndex = 35;
+            this.label10.Text = "Link*:";
             // 
             // advertenciaNombreLbl
             // 
             this.advertenciaNombreLbl.AutoSize = true;
             this.advertenciaNombreLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.advertenciaNombreLbl.ForeColor = System.Drawing.Color.Maroon;
-            this.advertenciaNombreLbl.Location = new System.Drawing.Point(189, 152);
+            this.advertenciaNombreLbl.Location = new System.Drawing.Point(124, 157);
             this.advertenciaNombreLbl.Name = "advertenciaNombreLbl";
             this.advertenciaNombreLbl.Size = new System.Drawing.Size(110, 15);
             this.advertenciaNombreLbl.TabIndex = 34;
             this.advertenciaNombreLbl.Text = "Campo Obligatorio";
             this.advertenciaNombreLbl.Visible = false;
             // 
-            // apellidoPaternoTxt
+            // anioTxt
             // 
-            this.apellidoPaternoTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.apellidoPaternoTxt.Location = new System.Drawing.Point(192, 185);
-            this.apellidoPaternoTxt.Name = "apellidoPaternoTxt";
-            this.apellidoPaternoTxt.Size = new System.Drawing.Size(349, 29);
-            this.apellidoPaternoTxt.TabIndex = 33;
-            this.apellidoPaternoTxt.Enter += new System.EventHandler(this.apellidoPaternoTxt_Enter);
-            this.apellidoPaternoTxt.Leave += new System.EventHandler(this.apellidoPaternoTxt_Leave);
+            this.anioTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.anioTxt.Location = new System.Drawing.Point(127, 183);
+            this.anioTxt.Name = "anioTxt";
+            this.anioTxt.Size = new System.Drawing.Size(349, 29);
+            this.anioTxt.TabIndex = 33;
+            this.anioTxt.Enter += new System.EventHandler(this.anioTxt_Enter);
+            this.anioTxt.Leave += new System.EventHandler(this.anioTxt_Leave);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(25, 186);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(57, 24);
+            this.label5.TabIndex = 31;
+            this.label5.Text = "Año*:";
             // 
             // nombreTxt
             // 
             this.nombreTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nombreTxt.Location = new System.Drawing.Point(192, 120);
+            this.nombreTxt.Location = new System.Drawing.Point(127, 125);
             this.nombreTxt.Name = "nombreTxt";
             this.nombreTxt.Size = new System.Drawing.Size(349, 29);
             this.nombreTxt.TabIndex = 32;
             this.nombreTxt.Enter += new System.EventHandler(this.nombreTxt_Enter);
             this.nombreTxt.Leave += new System.EventHandler(this.nombreTxt_Leave);
-            // 
-            // abreviacionLbl
-            // 
-            this.abreviacionLbl.AutoSize = true;
-            this.abreviacionLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.abreviacionLbl.Location = new System.Drawing.Point(25, 190);
-            this.abreviacionLbl.Name = "abreviacionLbl";
-            this.abreviacionLbl.Size = new System.Drawing.Size(161, 24);
-            this.abreviacionLbl.TabIndex = 31;
-            this.abreviacionLbl.Text = "Apellido Paterno*:";
             // 
             // nombreLbl
             // 
@@ -209,9 +277,9 @@ namespace Ambient_Inteligent_Group.Vista
             this.agregarModLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.agregarModLbl.Location = new System.Drawing.Point(15, 15);
             this.agregarModLbl.Name = "agregarModLbl";
-            this.agregarModLbl.Size = new System.Drawing.Size(260, 37);
+            this.agregarModLbl.Size = new System.Drawing.Size(305, 37);
             this.agregarModLbl.TabIndex = 28;
-            this.agregarModLbl.Text = "Agregar Persona";
+            this.agregarModLbl.Text = "Agregar Publicacion";
             // 
             // tabPage2
             // 
@@ -220,9 +288,9 @@ namespace Ambient_Inteligent_Group.Vista
             this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Controls.Add(this.eliminarBtn);
             this.tabPage2.Controls.Add(this.agregarBtn);
-            this.tabPage2.Controls.Add(this.tablaListaUniDt);
-            this.tabPage2.Controls.Add(this.tablaCataUniDt);
-            this.tabPage2.Controls.Add(this.universidadTxt);
+            this.tabPage2.Controls.Add(this.tablaListaPerDt);
+            this.tabPage2.Controls.Add(this.tablaCataPerDt);
+            this.tabPage2.Controls.Add(this.personaTxt);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Controls.Add(this.buscarBtn);
@@ -234,7 +302,7 @@ namespace Ambient_Inteligent_Group.Vista
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(843, 513);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Universidad";
+            this.tabPage2.Text = "Persona";
             // 
             // label9
             // 
@@ -242,19 +310,19 @@ namespace Ambient_Inteligent_Group.Vista
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(490, 151);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(322, 25);
+            this.label9.Size = new System.Drawing.Size(291, 25);
             this.label9.TabIndex = 43;
-            this.label9.Text = "Lista de Universidades asistidas";
+            this.label9.Text = "Lista de Personas Asociadas";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(76, 151);
+            this.label8.Location = new System.Drawing.Point(97, 151);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(218, 25);
+            this.label8.Size = new System.Drawing.Size(184, 25);
             this.label8.TabIndex = 42;
-            this.label8.Text = "Catalogo Universidad";
+            this.label8.Text = "Catalogo Persona";
             // 
             // eliminarBtn
             // 
@@ -276,38 +344,38 @@ namespace Ambient_Inteligent_Group.Vista
             this.agregarBtn.UseVisualStyleBackColor = true;
             this.agregarBtn.Click += new System.EventHandler(this.agregarBtn_Click);
             // 
-            // tablaListaUniDt
+            // tablaListaPerDt
             // 
-            this.tablaListaUniDt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tablaListaUniDt.Location = new System.Drawing.Point(470, 179);
-            this.tablaListaUniDt.Name = "tablaListaUniDt";
-            this.tablaListaUniDt.Size = new System.Drawing.Size(360, 264);
-            this.tablaListaUniDt.TabIndex = 39;
+            this.tablaListaPerDt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tablaListaPerDt.Location = new System.Drawing.Point(470, 179);
+            this.tablaListaPerDt.Name = "tablaListaPerDt";
+            this.tablaListaPerDt.Size = new System.Drawing.Size(360, 264);
+            this.tablaListaPerDt.TabIndex = 39;
             // 
-            // tablaCataUniDt
+            // tablaCataPerDt
             // 
-            this.tablaCataUniDt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tablaCataUniDt.Location = new System.Drawing.Point(13, 179);
-            this.tablaCataUniDt.Name = "tablaCataUniDt";
-            this.tablaCataUniDt.Size = new System.Drawing.Size(357, 264);
-            this.tablaCataUniDt.TabIndex = 38;
+            this.tablaCataPerDt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tablaCataPerDt.Location = new System.Drawing.Point(13, 179);
+            this.tablaCataPerDt.Name = "tablaCataPerDt";
+            this.tablaCataPerDt.Size = new System.Drawing.Size(357, 264);
+            this.tablaCataPerDt.TabIndex = 38;
             // 
-            // universidadTxt
+            // personaTxt
             // 
-            this.universidadTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.universidadTxt.Location = new System.Drawing.Point(138, 100);
-            this.universidadTxt.Name = "universidadTxt";
-            this.universidadTxt.Size = new System.Drawing.Size(275, 29);
-            this.universidadTxt.TabIndex = 37;
+            this.personaTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.personaTxt.Location = new System.Drawing.Point(138, 100);
+            this.personaTxt.Name = "personaTxt";
+            this.personaTxt.Size = new System.Drawing.Size(275, 29);
+            this.personaTxt.TabIndex = 37;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(10, 64);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(271, 16);
+            this.label7.Size = new System.Drawing.Size(321, 16);
             this.label7.TabIndex = 36;
-            this.label7.Text = "Seleccione las universidades de la persona";
+            this.label7.Text = "Seleccione las personas asociadas a la publicacion";
             // 
             // label6
             // 
@@ -358,88 +426,61 @@ namespace Ambient_Inteligent_Group.Vista
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(8, 26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(286, 25);
+            this.label1.Size = new System.Drawing.Size(357, 25);
             this.label1.TabIndex = 32;
-            this.label1.Text = "Universidades de la persona";
+            this.label1.Text = "Personas asociafas a la publicacion";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(25, 312);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(119, 24);
-            this.label4.TabIndex = 40;
-            this.label4.Text = "Escolaridad: ";
-            // 
-            // escolaridadCb
-            // 
-            this.escolaridadCb.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.escolaridadCb.FormattingEnabled = true;
-            this.escolaridadCb.Location = new System.Drawing.Point(192, 312);
-            this.escolaridadCb.Name = "escolaridadCb";
-            this.escolaridadCb.Size = new System.Drawing.Size(349, 26);
-            this.escolaridadCb.TabIndex = 41;
-            // 
-            // mujerRb
-            // 
-            this.mujerRb.AutoSize = true;
-            this.mujerRb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mujerRb.Location = new System.Drawing.Point(322, 380);
-            this.mujerRb.Name = "mujerRb";
-            this.mujerRb.Size = new System.Drawing.Size(66, 24);
-            this.mujerRb.TabIndex = 44;
-            this.mujerRb.TabStop = true;
-            this.mujerRb.Text = "Mujer";
-            this.mujerRb.UseVisualStyleBackColor = true;
-            // 
-            // hombreRb
-            // 
-            this.hombreRb.AutoSize = true;
-            this.hombreRb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hombreRb.Location = new System.Drawing.Point(192, 380);
-            this.hombreRb.Name = "hombreRb";
-            this.hombreRb.Size = new System.Drawing.Size(84, 24);
-            this.hombreRb.TabIndex = 43;
-            this.hombreRb.TabStop = true;
-            this.hombreRb.Text = "Hombre";
-            this.hombreRb.UseVisualStyleBackColor = true;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(26, 380);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(71, 24);
-            this.label5.TabIndex = 42;
-            this.label5.Text = "Sexo: *";
-            // 
-            // AgregarModificarPersonaForm
+            // AgregarModificarPublicacionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Menu;
-            this.ClientSize = new System.Drawing.Size(850, 534);
+            this.ClientSize = new System.Drawing.Size(854, 538);
             this.Controls.Add(this.tabControl1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
-            this.Name = "AgregarModificarPersonaForm";
+            this.Name = "AgregarModificarPublicacionForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AgregarModificarPersonaForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AgregarModificarPersonaForm_FormClosing);
+            this.Text = "AgregarModificarPublicacionForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AgregarModificarPublicacionForm_FormClosing);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tablaListaUniDt)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tablaCataUniDt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaListaPerDt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaCataPerDt)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.ComboBox tipoCb;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label advertenciaAnioLbl;
+        private System.Windows.Forms.TextBox linkTxt;
+        private System.Windows.Forms.Label advertenciaNombreLbl;
+        private System.Windows.Forms.TextBox nombreTxt;
+        private System.Windows.Forms.Label nombreLbl;
+        private System.Windows.Forms.Label instruccionesLbl;
+        private System.Windows.Forms.Label agregarModLbl;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button eliminarBtn;
+        private System.Windows.Forms.Button agregarBtn;
+        private System.Windows.Forms.DataGridView tablaListaPerDt;
+        private System.Windows.Forms.DataGridView tablaCataPerDt;
+        private System.Windows.Forms.TextBox personaTxt;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button buscarBtn;
+        private System.Windows.Forms.Button guardarBtn;
+        private System.Windows.Forms.Button cancelarBtn;
+        private System.Windows.Forms.Label label1;
+
+
 
         /**
          * Metodo para mostrar un mensaje al usuario, por ejemplo, un mensaje de
@@ -462,17 +503,18 @@ namespace Ambient_Inteligent_Group.Vista
          */
         public void setTabla(List<Object> info)
         {
-            switch (tablaDetector) {
+            switch (tablaDetector)
+            {
                 case 0:
                     if (info.Count > 0)
                     {
-                        uniLis = new List<Universidad>();
+                        perLis = new List<Persona>();
                         for (int i = 0; i < info.Count; i++)
                         {
-                            uniLis.Add((Universidad)info[i]);
+                            perLis.Add((Persona)info[i]);
                         }
-                        tablaCataUniDt.DataSource = uniLis;
-                        tablaCataUniDt.AutoResizeColumns();
+                        tablaCataPerDt.DataSource = perLis;
+                        tablaCataPerDt.AutoResizeColumns();
                         VisibilidadOpciones(true);
                     }
                     else
@@ -481,31 +523,31 @@ namespace Ambient_Inteligent_Group.Vista
                     }
                     break;
                 case 1:
-                    listaSocioUniversidad = info;
+                    listaColaboradorPublicacion = info;
                     break;
                 case 2:
-                    if (listaSocioUniversidad.Count > 0) {
-                        List<Universidad> secUniLis = new List<Universidad>();
+                    if (listaColaboradorPublicacion.Count > 0)
+                    {
+                        List<Persona> secPerLis = new List<Persona>();
                         CrearTabla();
                         for (int i = 0; i < info.Count; i++)
                         {
-                            secUniLis.Add((Universidad)info[i]);
+                            secPerLis.Add((Persona)info[i]);
                         }
-                        for (int i = 0; i < listaSocioUniversidad.Count; i++)
+                        for (int i = 0; i < listaColaboradorPublicacion.Count; i++)
                         {
-                            for (int k = 0; k < secUniLis.Count; k++)
+                            for (int k = 0; k < secPerLis.Count; k++)
                             {
-                                if (secUniLis[k].IdUniversidad == (int)listaSocioUniversidad[i])
+                                if (secPerLis[k].IdPersona == (int)listaColaboradorPublicacion[i])
                                 {
-                                    String[] row = new String[] { secUniLis[k].IdUniversidad + "", secUniLis[k].NombreUniversidad };
-                                    tablaListaUniDt.Rows.Add(row);
-                                    
+                                    String[] row = new String[] { secPerLis[k].IdPersona + "", secPerLis[k].NombreCompleto+" "+secPerLis[k].ApellidoPaterno};
+                                    tablaListaPerDt.Rows.Add(row);
                                 }
                             }
                         }
-                        tablaListaUniDt.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells; ;
+                        tablaListaPerDt.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells; ;
                     }
-                break;
+                    break;
             }
         }
 
@@ -516,53 +558,14 @@ namespace Ambient_Inteligent_Group.Vista
 
         public void setLista(List<Object> info, int i)
         {
-            switch (i)
-            {
-                case 1:
-                    List<Escolaridad> escoLis = new List<Escolaridad>();
-                    escoLis.Add(new Escolaridad(0,""));
-                    for (int k = 0; k < info.Count; k++)
-                    {
-                        escoLis.Add((Escolaridad)info[k]);
-                    }
-                    escolaridadCb.DataSource = escoLis;
-                    escolaridadCb.DisplayMember = "Descripcion";
-                    escolaridadCb.ValueMember = "IdEscolaridad";
-                    escolaridadCb.DropDownStyle = ComboBoxStyle.DropDownList;
-                    break;
-            }
         }
 
-        private TabControl tabControl1;
-        private TabPage tabPage1;
-        private Label advertenciaNombreLbl;
-        private TextBox apellidoPaternoTxt;
-        private TextBox nombreTxt;
-        private Label abreviacionLbl;
-        private Label nombreLbl;
-        private Label instruccionesLbl;
-        private Label agregarModLbl;
-        private TabPage tabPage2;
-        private Button buscarBtn;
-        private Button guardarBtn;
-        private Button cancelarBtn;
-        private Label label1;
-        private Label advertenciaApellidoPLbl;
-        private TextBox apellidoMaternoTxt;
-        private Label label2;
-        private Label label9;
-        private Label label8;
-        private Button eliminarBtn;
-        private Button agregarBtn;
-        private DataGridView tablaListaUniDt;
-        private DataGridView tablaCataUniDt;
-        private TextBox universidadTxt;
-        private Label label7;
-        private Label label6;
-        private ComboBox escolaridadCb;
-        private Label label4;
-        private RadioButton mujerRb;
-        private RadioButton hombreRb;
+        private Label advertenciaPaginaLbl;
+        private Label advertenciaLinkLbl;
+        private TextBox paginaTxt;
+        private Label label3;
+        private Label label10;
+        private TextBox anioTxt;
         private Label label5;
     }
 }

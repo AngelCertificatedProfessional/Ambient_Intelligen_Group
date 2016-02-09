@@ -27,18 +27,37 @@ namespace Ambient_Inteligent_Group.Vista
             tablaListaUniDt.AutoResizeColumns();
             
         }
-        public void ObtenerInfo(List<Object> listaPlatica)
+
+        public void ObtenerInfo(List<Object> listaPersona)
         {
-            /*
-            idPlatica = (int)listaPlatica[0];
-            fechaDt.Value = (DateTime)listaPlatica[1];
-            nombrePlaticaTxt.Text = (String)listaPlatica[2];
-            sedeCb.SelectedValue = (int)listaPlatica[3];
-            nombreEventoTxt.Text = (String)listaPlatica[4];
-            abreviacionEventoTxt.Text = (String)listaPlatica[5];
+            
+            idPersona = (int)listaPersona[0];
+            nombreTxt.Text = (String) listaPersona[1];
+            apellidoPaternoTxt.Text = (String)listaPersona[2];
+            apellidoMaternoTxt.Text = (String)listaPersona[3];
+            if (listaPersona[4] != null)
+            {
+                escolaridadCb.SelectedValue = (int)listaPersona[4];
+            }
+            else {
+                escolaridadCb.SelectedValue = 0;
+            }
+
+            if ((char)listaPersona[5]=='H') {
+                hombreRb.Checked = true;
+            }
+            else{
+                mujerRb.Checked = true;
+            }
 
             guardarBtn.Text = "Modificar";
-            agregarModLbl.Text = "Modificar Platica";*/
+            agregarModLbl.Text = "Modificar Persona";
+            tablaDetector++;
+            personaControl.ObtenerPorIdLis("Socio_Universidad", idPersona, "Persona_id");
+            tablaDetector++;
+            personaControl.BuscarTodos("Universidad");
+            tablaDetector = 0;
+
         }
 
         private void agregarBtn_Click(object sender, EventArgs e)
@@ -73,7 +92,7 @@ namespace Ambient_Inteligent_Group.Vista
             tablaListaUniDt.ColumnCount = 2;
             tablaListaUniDt.Columns[0].Name = "IdUni";
             tablaListaUniDt.Columns[1].Name = "Universidad";
-
+            tablaListaUniDt.AutoResizeColumns();
         }
 
 
@@ -133,7 +152,6 @@ namespace Ambient_Inteligent_Group.Vista
 
         private void eliminarBtn_Click(object sender, EventArgs e)
         {
-            List<Universidad> uniLisTemporal = new List<Universidad>();
             try {
                 if (tablaListaUniDt.CurrentRow.Cells[0].Value != null) {
                     tablaListaUniDt.Rows.RemoveAt(tablaListaUniDt.SelectedRows[0].Index);
@@ -146,6 +164,77 @@ namespace Ambient_Inteligent_Group.Vista
             
         }
 
+        private void guardarBtn_Click(object sender, EventArgs e)
+        {
+            if (Validacion() == false)
+            {
+                List<int> listaUniversidad = new List<int>();
+                if (guardarBtn.Text == "Guardar")
+                {
+                    List<Object> listaPersona = new List<Object>();
+                    listaPersona.Add(nombreTxt.Text);
+                    listaPersona.Add(apellidoPaternoTxt.Text);
+                    listaPersona.Add(apellidoMaternoTxt.Text);
+                    listaPersona.Add(escolaridadCb.SelectedValue);
+                    if (hombreRb.Checked == true)
+                    {
+                        listaPersona.Add('H');
+                    }
+                    else {
+                        listaPersona.Add('M');
+                    }
 
+                    if (tablaListaUniDt.RowCount>1) {
+                        for (int i=0;i<tablaListaUniDt.RowCount-1;i++) {
+                            listaUniversidad.Add(Convert.ToInt32(tablaListaUniDt.Rows[i].Cells[0].Value));
+                        }
+                    }
+                    personaControl.GuardarPersona(HelpetEntidad.ContruccionPersona(listaPersona, "Guardar"),listaUniversidad);
+                }
+                else
+                {
+                    List<Object> listaPersona = new List<Object>();
+                    listaPersona.Add(idPersona);
+                    listaPersona.Add(nombreTxt.Text);
+                    listaPersona.Add(apellidoPaternoTxt.Text);
+                    listaPersona.Add(apellidoMaternoTxt.Text);
+                    listaPersona.Add(escolaridadCb.SelectedValue);
+                    if (hombreRb.Checked == true)
+                    {
+                        listaPersona.Add('H');
+                    }
+                    else {
+                        listaPersona.Add('M');
+                    }
+                    if (tablaListaUniDt.RowCount > 0)
+                    {
+                        for (int i = 0; i < tablaListaUniDt.RowCount - 1; i++)
+                        {
+                            listaUniversidad.Add(Convert.ToInt32(tablaListaUniDt.Rows[i].Cells[0].Value));
+                        }
+                    }
+                    personaControl.ModificarPersona(HelpetEntidad.ContruccionPersona(listaPersona, "Modificar"), listaUniversidad);
+                }
+            }
+        }
+
+        private Boolean Validacion()
+        {
+            if (nombreTxt.Text == "")
+            {
+                MessageBox.Show("Se debe escribir el nombre de la persona", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
+            } else if (apellidoPaternoTxt.Text == "")
+            {
+                MessageBox.Show("Se debe escribir el Apellido Paterno de la persona", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
+            }
+            else if (hombreRb.Checked == false && mujerRb.Checked == false)
+            {
+                MessageBox.Show("Se debe seleccionar un sexo de la persona", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
+            }
+            return false;
+        }
     }
 }
